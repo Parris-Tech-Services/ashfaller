@@ -1,0 +1,26 @@
+version: 2
+# Repairs must pass full CI and independent locked-version rescan before merge.
+# Never auto-merge or force major-version upgrades.
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Australia/Sydney"
+    open-pull-requests-limit: 5
+    groups:
+      scoped-security-updates:
+        applies-to: security-updates
+        update-types:
+          - "minor"
+          - "patch"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:30"
+      timezone: "Australia/Sydney"
+    open-pull-requests-limit: 3
